@@ -1,140 +1,37 @@
 # NotioNux
 
-A lightweight, privacy-friendly Linux desktop client for Notion built with Electron.
-
-NotioNux wraps the official Notion web application in a native desktop experience while adding Linux-focused quality-of-life improvements such as system tray support, persistent sessions, global shortcuts, and AppImage distribution.
-
----
+A lightweight desktop client for Notion on Linux built with Electron.
 
 ## Features
 
 * Persistent login sessions
-* AppImage distribution (no installation required)
-* System tray integration
-* Hide-to-tray behavior
 * Single-instance protection
+* System tray integration
+* Hide to tray on close
 * Global keyboard shortcut support
+* AppImage distribution
 * External links open in the default browser
-* Sandboxed Electron configuration
-* Lightweight and minimal architecture
-* Linux-first experience
-
----
+* Secure Electron configuration
 
 ## Screenshots
 
-> Add screenshots here after the first stable release.
-
-| Main Window | Tray Integration |
-| ----------- | ---------------- |
-| Screenshot  | Screenshot       |
-
----
-
-## Architecture
-
-```text
-┌─────────────────────┐
-│     NotioNux        │
-├─────────────────────┤
-│ Electron Main       │
-│ ├─ Window Manager   │
-│ ├─ Tray Manager     │
-│ ├─ Shortcut Manager │
-│ └─ Session Manager  │
-├─────────────────────┤
-│ Chromium Renderer   │
-├─────────────────────┤
-│ Notion Web App      │
-└─────────────────────┘
-```
-
-### Design Principles
-
-* Minimal dependencies
-* No custom backend
-* No credential storage
-* Native Linux workflows
-* Small maintenance surface
-* Open source and transparent
-
----
-
-## Security
-
-NotioNux does not store your Notion credentials.
-
-Authentication is handled entirely by Notion. Session persistence relies on Electron's encrypted local storage and cookie management.
-
-Electron is configured with:
-
-```javascript
-nodeIntegration: false
-contextIsolation: true
-sandbox: true
-```
-
-External URLs are opened in the system browser rather than inside the application.
-
----
+*Add screenshots here.*
 
 ## Installation
 
-### Download AppImage
-
-Download the latest release from the Releases page.
+### Run AppImage
 
 ```bash
 chmod +x NotioNux.AppImage
 ./NotioNux.AppImage
 ```
 
-### Create Desktop Launcher
+## Build From Source
 
-```bash
-mkdir -p ~/Applications
-mv NotioNux.AppImage ~/Applications/
+### Prerequisites
 
-chmod +x ~/Applications/NotioNux.AppImage
-```
-
-Example desktop entry:
-
-```ini
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=NotioNux
-Exec=/home/<user>/Applications/NotioNux.AppImage
-Icon=/home/<user>/.local/share/icons/notionux.png
-Terminal=false
-Categories=Office;Productivity;
-```
-
----
-
-## Global Shortcuts
-
-| Shortcut        | Action                     |
-| --------------- | -------------------------- |
-| Ctrl + Numpad 0 | Toggle NotioNux visibility |
-
-The shortcut can be customized in the source code.
-
----
-
-## Tray Behavior
-
-| Action                 | Result            |
-| ---------------------- | ----------------- |
-| Close Window           | Hide to tray      |
-| Minimize Window        | Hide to tray      |
-| Double-click Tray Icon | Toggle visibility |
-| Tray Menu → Quit       | Exit application  |
-
----
-
-## Development
+* Node.js
+* npm
 
 ### Clone
 
@@ -155,54 +52,52 @@ npm install
 npm start
 ```
 
-### Build AppImage
+### Build
 
 ```bash
 npm run build
 ```
 
-Generated artifacts:
+The generated AppImage will be available in:
 
 ```text
 dist/
-├── NotioNux-x.y.z.AppImage
-└── linux-unpacked/
 ```
 
----
+## Tray Behavior
 
-## Project Structure
+### Close Button
+
+Closing the window hides the application to the system tray.
+
+### Tray Icon
+
+* Show/Hide window
+* Quit application
+
+## Keyboard Shortcut
+
+Current shortcut:
 
 ```text
-NotioNux/
-├── assets/
-│   └── icon.png
-├── src/
-│   └── main.js
-├── package.json
-└── README.md
+Ctrl + Numpad 0
 ```
 
----
+Behavior:
 
-## Contributing
+* Hidden → Show window
+* Visible → Hide window
 
-Issues, suggestions, and pull requests are welcome.
+## Security
 
-If you encounter a bug or have an idea that improves the Linux desktop experience for Notion users, feel free to open an issue.
+Electron is configured with:
 
----
-
-## License
-
-This project is currently unlicensed.
-
-A license may be added in a future release.
-
----
+```js
+nodeIntegration: false
+contextIsolation: true
+sandbox: true
+```
 
 ## Disclaimer
 
-NotioNux is an independent open-source project and is not affiliated with, endorsed by, or sponsored by Notion Labs, Inc.
-
-Notion is a trademark of Notion Labs, Inc.
+NotioNux is an independent project and is not affiliated with Notion Labs, Inc.
