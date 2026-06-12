@@ -35,6 +35,7 @@ function createWindow() {
 
 tray = new Tray(iconPath);
 
+
 // Remove the context menu entirely
 const contextMenu = Menu.buildFromTemplate([
     {
@@ -59,6 +60,23 @@ mainWindow.on("minimize", (event) => {
     mainWindow.hide();
 });
 
+function toggleWindow() {
+    if (!mainWindow) {
+        return;
+    }
+
+    if (mainWindow.isVisible() && mainWindow.isFocused()) {
+        mainWindow.hide();
+    } else {
+        mainWindow.show();
+        mainWindow.focus();
+    }
+}
+
+tray.on("double-click", () => {
+    toggleWindow();
+});
+
 tray.setContextMenu(contextMenu);
 
     mainWindow.webContents.setWindowOpenHandler(({ url }) => {
@@ -70,7 +88,7 @@ tray.setContextMenu(contextMenu);
 app.whenReady().then(() => {
     createWindow();
 
-    globalShortcut.register("Control+Alt+N", () => {
+    globalShortcut.register("CommandOrControl+num0", () => {
         if (!mainWindow) {
             return;
         }
