@@ -7,7 +7,7 @@ function createWindow(){
         width: 1440,
         height: 900,
         autoHideMenuBar: true,
-        title: NotioNux,
+        title: "NotioNux",
         webPreferences: {
             partition: "persist:notionux"
         }
