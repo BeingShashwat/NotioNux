@@ -1,3 +1,9 @@
+const gotLock = app.requestSingleInstanceLock();
+
+if (!gotLock) {
+    app.quit();
+}
+
 const {app, BrowserWindow, shell} = require("electron");
 
 let mainWindow;
@@ -9,7 +15,10 @@ function createWindow(){
         autoHideMenuBar: true,
         title: "NotioNux",
         webPreferences: {
-            partition: "persist:${profileName}"
+            partition: "persist:${profileName}",
+            nodeIntegration: false,
+            contextIsolation: true,
+            sandbox: true
         }
     });
 
@@ -22,6 +31,11 @@ function createWindow(){
         return {action:deny};
     });
 }
+
+const path = require("path");
+app.setPath(
+    "userData", path.join(app.getPath("home"), ".notionux")
+);
 
 app.whenReady().then(createWindow);
 app.on("window-all-closed", ()=>{

@@ -4,9 +4,19 @@
   "description": "Linux desktop client for Notion",
   "main": "src/main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "com.beingshashwat.notionux",
+    "productName": "NotioNux",
+    "linux": {
+      "target": "AppImage",
+      "category": "Office"
+    }
   },
   "devDependencies": {
+    "electron": "^42.4.0",
     "electron-builder": "^26.15.3"
   }
 }
