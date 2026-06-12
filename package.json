@@ -11,8 +11,9 @@
     "appId": "com.beingshashwat.notionux",
     "productName": "NotioNux",
     "linux": {
-      "target": "AppImage",
-      "category": "Office"
+      "target": ["AppImage"],
+      "category": "Office",
+      "icon":"assets"
     }
   },
   "devDependencies": {
