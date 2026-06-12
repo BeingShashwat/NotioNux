@@ -9,7 +9,7 @@ function createWindow(){
         autoHideMenuBar: true,
         title: "NotioNux",
         webPreferences: {
-            partition: "persist:notionux"
+            partition: "persist:${profileName}"
         }
     });
 
