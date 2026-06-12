@@ -13,10 +13,6 @@ A lightweight desktop client for Notion on Linux built with Electron.
 * External links open in the default browser
 * Secure Electron configuration
 
-## Screenshots
-
-*Add screenshots here.*
-
 ## Installation
 
 ### Run AppImage
