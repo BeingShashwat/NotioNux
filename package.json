@@ -1,0 +1,9 @@
+{
+  "name": "notionux",
+  "version": "1.0.0",
+  "description": "Linux desktop client for Notion",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron ."
+  }
+}
