@@ -1,27 +1,13 @@
-# Node modules
 node_modules/
-
-# Build output
 dist/
-build/
-
-# Electron cache
+release/
 out/
 
-# Logs
-*.log
-
-# Environment files
-.env
-.env.local
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# IDE
 .idea/
 .vscode/
 
-# Electron packaging
-release/
+.env
+
+*.log
+.DS_Store
+Thumbs.db
